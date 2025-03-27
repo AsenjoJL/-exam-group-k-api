@@ -1,26 +1,28 @@
-const express = require('express');
-const router = express.Router();
 
-// Sample exams data stored in an array
-let exams = [
-  { id: 1, name: "Math Exam", date: "2025-04-01" },
-  { id: 2, name: "Science Exam", date: "2025-04-05" }
-];
+// PUT request - Update an item by id
+router.put('/:id', (req, res) => {
+  const itemId = parseInt(req.params.id);
+  const updatedData = req.body;
 
-// POST /exams - Add a new exam
-router.post('/', (req, res) => {
-  const newExam = req.body;
-
-  // Validate that required fields exist
-  if (!newExam.name || !newExam.date) {
-    return res.status(400).json({ message: "Exam name and date are required." });
+  // Validate that the required fields exist (firstname, lastname, and age)
+  if (!updatedData.firstname || !updatedData.lastname || !updatedData.age) {
+    return res.status(400).send('Firstname, lastname, and age are required');
   }
 
-  // Assign a new ID
-  newExam.id = exams.length + 1;
-  exams.push(newExam);
+  // Validate that age is a number
+  if (isNaN(updatedData.age)) {
+    return res.status(400).send('Age must be a number');
+  }
 
-  res.status(201).json(newExam);
+  // Find the item by id
+  const itemIndex = items.findIndex(item => item.id === itemId);
+
+  if (itemIndex === -1) {
+    return res.status(404).send('Item not found');
+  }
+
+  // Update the item
+  items[itemIndex] = { ...items[itemIndex], ...updatedData };
+  res.json(items[itemIndex]);
 });
 
-module.exports = router;
