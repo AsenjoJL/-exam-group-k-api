@@ -1,5 +1,6 @@
 
 
+
 // routes/items.js
 
 const express = require('express');
@@ -29,6 +30,7 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router;
+
 
 const express = require('express');
 const router = express.Router();
@@ -108,6 +110,9 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
   res.json(exams);
 });
+
+module.exports = router;
+
 
 module.exports = router;
 
