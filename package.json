@@ -19,5 +19,6 @@
   "homepage": "https://github.com/AsenjoJL/-exam-group-k-api#readme",
   "dependencies": {
     "express": "^4.21.2"
-  }
+  },
+  "devDependencies": {}
 }
