@@ -1,17 +1,14 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 
-// Middleware to parse JSON request bodies
 app.use(express.json());
 
-// Import the exams route
-const examsRoute = require('./routes/items');
+// Import routes
+const examRoutes = require('./routes/exam'); // Updated from 'items' to 'exam'
 
-// Use the exams route
-app.use('/exams', examsRoute);
+app.use('/exams', examRoutes);
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
