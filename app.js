@@ -15,13 +15,13 @@ app.use(express.json());
 
 
 // Import the routes from the items.js file
-const itemsRoute = require('./routes/items');
+const itemsRoute = require('./routes/exam');
 
 // Use the routes for the `/items` endpoint
 app.use('/items', itemsRoute);
 
 // Import the exams route
-const examsRoute = require('./routes/items');
+const examsRoute = require('./routes/exam');
 
 // Use the exams route
 app.use('/exams', examsRoute);
